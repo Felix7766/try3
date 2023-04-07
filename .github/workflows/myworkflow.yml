@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: 3.9
       - name: Install dependencies
-        run: pip install -r "try3/requirements.txt"
+        run: pip install Flask==2.0.1 requests==2.25.1
       - name: Run script
         if: ${{ github.event_name == 'push' && github.sha == steps.check_changes.outputs.commit_hash }}
         run: python my_script.py
