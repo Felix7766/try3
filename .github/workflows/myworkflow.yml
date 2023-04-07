@@ -1,19 +1,19 @@
 name: myworkflow
 on:
-  push: 
+  push:
     branches: [main]
-
+  pull_request:
+    branches: [main]
 jobs:
   build:
-    runs-on: unbuntu-lastest
-    
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Check for changes
-      id: check_changes
-      run: echo ::set-output name=commit_hash::$(git rev-parse HEAD)
-    - name: my action
-      if: ${{ github.event_name == 'push' && github.sha == steps.check_changes.outputs.commit_hash }}
-      run: echo "byebye"
+      - uses: actions/checkout@v2
+      - name: Check for changes
+        id: check_changes
+        run: echo ::set-output name=commit_hash::$(git rev-parse HEAD)
+      - name: my action
+        if: ${{ github.event_name == 'push' && github.sha == steps.check_changes.outputs.commit_hash }}
+        run: echo "byebye"
       
     
