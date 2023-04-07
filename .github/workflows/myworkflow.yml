@@ -4,7 +4,7 @@ on:
     branches: [main]
 
 jobs:
-  bulid:
+  build:
     runs-on: unbuntu-lastest
     
     steps:
