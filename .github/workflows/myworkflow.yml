@@ -12,8 +12,14 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: echo ::set-output name=commit_hash::$(git rev-parse HEAD)
-      - name: my action
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run script
         if: ${{ github.event_name == 'push' && github.sha == steps.check_changes.outputs.commit_hash }}
-        run: echo "byebye"
+        run: python my_script.py
       
     
