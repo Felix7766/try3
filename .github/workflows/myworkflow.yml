@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: 3.9
       - name: Install dependencies
-        run: pip install -r try3/requirements.txt
+        run: pip install -r "try3/requirements.txt"
       - name: Run script
         if: ${{ github.event_name == 'push' && github.sha == steps.check_changes.outputs.commit_hash }}
         run: python my_script.py
